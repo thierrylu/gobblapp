@@ -1,0 +1,53 @@
+//
+//  Prefix header
+//
+//  The contents of this file are implicitly included at the beginning of every source file.
+//
+
+#import <Availability.h>
+
+#ifndef __IPHONE_5_0
+#warning "This project uses features only available in iOS SDK 5.0 and later."
+#endif
+
+#ifdef __OBJC__
+    #import <UIKit/UIKit.h>
+    #import <Foundation/Foundation.h>
+    #import <QuartzCore/QuartzCore.h>
+    #import "FAAppDelegate.h"
+    #import "ASIHTTPRequest.h"
+    #import "ASIFormDataRequest.h"
+    #import "JSON.h"
+    #import <FacebookSDK/FacebookSDK.h>
+    #import "MBProgressHUD.h"
+    #import <MapKit/MapKit.h>
+    #import "UIViewEnhanced.h"
+    #import "UIImageView+WebCache.h"
+#endif
+
+
+#define IOS_VERSION [[[UIDevice currentDevice] systemVersion] floatValue]
+
+#define SAFE_RELEASE_OBJECT(p)				{ if (p) { [(p) = nil;  } }
+#define SAFE_RELEASE_VIEW(p)                { if (p) { [(p) removeFromSuperview]; (p) = nil;  } }
+#define SAFE_RELEASE_ARRAY(p)               { if (p) { [(p) removeAllObjects]; (p) = nil;  } }
+
+#define kApplicationDelegate    (FAAppDelegate *)[[UIApplication sharedApplication] delegate]
+#define isIOS7 ([[[[UIDevice currentDevice].systemVersion componentsSeparatedByString:@"."] objectAtIndex:0] intValue] >= 7?YES:NO)
+#define addIOS7 ([[[[UIDevice currentDevice].systemVersion componentsSeparatedByString:@"."] objectAtIndex:0] intValue] >= 7?20:0)
+
+#define IS_IPHONE5          ([[UIScreen mainScreen] bounds].size.height >= 568 && UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone)?YES:NO
+#define IS_IPHONE           (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone)?YES:NO
+#define IS_IPAD             (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad)?YES:NO
+#define IS_RETINA ([[UIScreen mainScreen] respondsToSelector:@selector(scale)] == YES && [[UIScreen mainScreen] scale] == 2.00)
+
+#define colorTitle [UIColor colorWithRed:60.0/255 green:60.0/255 blue:60.0/255 alpha:1.0]
+#define colorSubTitle [UIColor colorWithRed:102.0/255 green:102.0/255 blue:102.0/255 alpha:1.0]
+
+#define pathDir [NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES) objectAtIndex:0]
+
+#define appId @"684434441593994"
+#define appSecret @"b52dddbbeec7437da812b084b6815698"
+
+#define urlTest @"foodprint.snapplab.com"
+#define urlReal @"gobbl.snapplab.com"
